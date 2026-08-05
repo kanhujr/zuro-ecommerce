@@ -2,13 +2,50 @@ import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
 import upi from "../../assets/payment/upi.svg";
 import razorpay from "../../assets/payment/razorpay.svg";
 
+const shopLinks = [
+  { label: "All Products", path: "/shop" },
+  { label: "Acid Wash", path: "/category/acid-wash" },
+  { label: "Everyday Essential", path: "/category/everyday-essential" },
+  { label: "Hindu Divine", path: "/category/hindu-divine" },
+  { label: "Oversized", path: "/category/oversized" },
+  { label: "Anime", path: "/category/anime" },
+];
+
+const helpLinks = [
+  { label: "Contact Us", path: "/contact" },
+  { label: "FAQs", path: "/faq" },
+  { label: "Shipping Policy", path: "/shipping-policy" },
+  { label: "Return Policy", path: "/return-policy" },
+  { label: "Privacy Policy", path: "/privacy-policy" },
+];
+
+const accountLinks = [
+  { label: "My Account", path: "/account" },
+  { label: "Orders", path: "/orders" },
+  { label: "Wishlist", path: "/wishlist" },
+  { label: "Addresses", path: "/addresses" },
+];
+
+const contactInfo = [
+  "support@zuro.com",
+  "+91 98765 43210",
+  "Mon – Sat • 10 AM – 7 PM",
+  "Bhubaneswar, Odisha",
+];
+
+const socialLinks = [
+  { icon: FaInstagram, href: "#" },
+  { icon: FaFacebookF, href: "#" },
+  { icon: FaYoutube, href: "#" },
+];
+
 const Footer = () => {
   return (
     <footer className=" bg-[#F5F4F1] border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-2 md:grid-cols-5 gap-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-16 lg:py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
         {/* Brand */}
-        <div>
-          <h2 className="text-4xl font-extrabold tracking-[0.25em] text-black">
+        <div className="text-center sm:text-left">
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-[0.25em] text-black">
             ZURO
           </h2>
 
@@ -16,46 +53,34 @@ const Footer = () => {
             Premium streetwear crafted for people who create their own style.
           </p>
 
-          <div className="flex gap-3 mt-8">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white cursor-pointer transition-all hover:bg-orange-500 hover:border-orange-500 hover:text-white">
-              <FaInstagram size={16} />
-            </div>
-
-            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white cursor-pointer transition-all hover:bg-orange-500 hover:border-orange-500 hover:text-white">
-              <FaFacebookF size={16} />
-            </div>
-
-            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white cursor-pointer transition-all hover:bg-orange-500 hover:border-orange-500 hover:text-white">
-              <FaYoutube size={16} />
-            </div>
+          <div className="mt-8 flex justify-center sm:justify-start gap-3">
+            {socialLinks.map(({ icon: Icon, href }) => (
+              <a
+                key={href + Icon.name}
+                href={href}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white transition-all duration-300 hover:border-orange-500 hover:bg-orange-500 hover:text-white"
+              >
+                <Icon size={16} />
+              </a>
+            ))}
           </div>
         </div>
 
         {/* Shop */}
-        <div>
+        <div className="sm:text-left">
           <h3 className="mb-6 text-xs font-bold uppercase tracking-[0.22em] text-black">
             Shop
           </h3>
 
           <ul className="space-y-4 text-sm text-gray-600">
-            <li className="cursor-pointer hover:text-orange-500 transition-colors">
-              All Products
-            </li>
-            <li className="cursor-pointer hover:text-orange-500 transition-colors">
-              Acid Wash
-            </li>
-            <li className="cursor-pointer hover:text-orange-500 transition-colors">
-              Everyday Essential
-            </li>
-            <li className="cursor-pointer hover:text-orange-500 transition-colors">
-              Hindu Divine
-            </li>
-            <li className="cursor-pointer hover:text-orange-500 transition-colors">
-              Oversized
-            </li>
-            <li className="cursor-pointer hover:text-orange-500 transition-colors">
-              Anime
-            </li>
+            {shopLinks.map((link) => (
+              <li
+                key={link.path}
+                className="cursor-pointer transition-colors duration-300 hover:text-orange-500"
+              >
+                {link.label}
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -66,21 +91,14 @@ const Footer = () => {
           </h3>
 
           <ul className="space-y-4 text-sm text-gray-600">
-            <li className="cursor-pointer hover:text-orange-500 transition-colors">
-              Contact Us
-            </li>
-            <li className="cursor-pointer hover:text-orange-500 transition-colors">
-              FAQs
-            </li>
-            <li className="cursor-pointer hover:text-orange-500 transition-colors">
-              Shipping Policy
-            </li>
-            <li className="cursor-pointer hover:text-orange-500 transition-colors">
-              Return Policy
-            </li>
-            <li className="cursor-pointer hover:text-orange-500 transition-colors">
-              Privacy Policy
-            </li>
+            {helpLinks.map((link) => (
+              <li
+                key={link.path}
+                className="cursor-pointer transition-colors duration-300 hover:text-orange-500"
+              >
+                {link.label}
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -91,18 +109,14 @@ const Footer = () => {
           </h3>
 
           <ul className="space-y-4 text-sm text-gray-600">
-            <li className="cursor-pointer hover:text-orange-500 transition-colors">
-              My Account
-            </li>
-            <li className="cursor-pointer hover:text-orange-500 transition-colors">
-              Orders
-            </li>
-            <li className="cursor-pointer hover:text-orange-500 transition-colors">
-              Wishlist
-            </li>
-            <li className="cursor-pointer hover:text-orange-500 transition-colors">
-              Addresses
-            </li>
+            {accountLinks.map((link) => (
+              <li
+                key={link.path}
+                className="cursor-pointer transition-colors duration-300 hover:text-orange-500"
+              >
+                {link.label}
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -113,22 +127,21 @@ const Footer = () => {
           </h3>
 
           <ul className="space-y-4 text-sm text-gray-600">
-            <li>support@zuro.com</li>
-            <li>+91 98765 43210</li>
-            <li>Mon – Sat • 10 AM – 7 PM</li>
-            <li>Bhubaneswar, Odisha</li>
+            {contactInfo.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
         </div>
       </div>
 
       {/* Bottom */}
       <div className="bg-white border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-5">
+        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col-reverse md:flex-row items-center justify-between gap-5">
           <p className="text-sm text-gray-500">
             © 2026 ZURO. All Rights Reserved.
           </p>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center flex-wrap justify-center gap-3">
             {[upi, razorpay].map((logo, index) => (
               <div
                 key={index}
